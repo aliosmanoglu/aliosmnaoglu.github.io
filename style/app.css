@@ -1,0 +1,96 @@
+:root {
+    --primary-color : #0CB5DF;
+    --secondary-coor : #0D253F;
+
+
+}
+
+.header-nav {
+    background-color: var(--primary-color) !important;
+}
+.navbar-brand {
+    font-size: 24px !important;
+    color: #fff !important;
+}
+
+main {
+    background-color: var(--secondary-coor);
+    min-height: 100vh;
+}
+
+.title {
+    color: #fff;
+}
+
+.search-input {
+    width: 100%;
+    height: 50px;
+    border-radius: 15px;
+    padding: 10px;
+    font-size: 14px;
+}
+
+.primary-button {
+    background-color: var(--primary-color);
+    color: #fff;
+    height: 100%;
+    width: 100%;
+    border-radius: 15px;
+    font-size: 14px;
+}
+
+.result-list {
+    background-color: rgba(0, 0, 0, 0.3);
+    border-radius: 15px;
+    margin: 24px 0; 
+}
+.result-element {
+    margin: 24px 0;
+
+}
+
+
+.movie-img img {
+    height: 250px;
+    object-fit: cover;
+    width: 150px;
+}
+.movie-att {
+    color: #fff;
+}
+
+.detail-div {
+    color: #fff !important;
+    border: 2px solid #fff;
+    border-radius: 15px;
+    margin: 15px 0;
+    padding: 10px;
+}
+.detail-span {
+    font-weight: 700;
+    font-size: 20px;
+}
+
+.sort-box,.filter-box {
+    background-color: rgba(0, 0, 0, 0.3);
+    border-radius: 15px;
+    margin: 10px 0;
+}
+.sort-list,.filter-list {
+    border-radius: 15px;
+    color: #fff;
+    list-style: none;
+    padding: 0;
+}
+.sort-element,.filter-element {
+    transition: all 300ms ease-in-out;
+    background-color: rgba(72, 72, 72, 0.3);
+    padding: 10px;
+    border-radius: 15px;
+    margin: 10px 0;
+    font-size: 14px;
+    cursor: pointer;
+}
+.sort-element.active,.filter-element.active {
+    background-color: var(--primary-color);
+}
