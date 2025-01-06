@@ -71,18 +71,18 @@ main {
     font-size: 20px;
 }
 
-.sort-box,.filter-box {
+.sort-box,.filter-box,.release-date-box {
     background-color: rgba(0, 0, 0, 0.3);
     border-radius: 15px;
     margin: 10px 0;
 }
-.sort-list,.filter-list {
+.sort-list,.filter-list,.release-list {
     border-radius: 15px;
     color: #fff;
     list-style: none;
     padding: 0;
 }
-.sort-element,.filter-element {
+.sort-element,.filter-element,.filter-release {
     transition: all 300ms ease-in-out;
     background-color: rgba(72, 72, 72, 0.3);
     padding: 10px;
@@ -91,6 +91,23 @@ main {
     font-size: 14px;
     cursor: pointer;
 }
-.sort-element.active,.filter-element.active {
+.sort-element.active,.filter-element.active,.filter-release.active {
     background-color: var(--primary-color);
+}
+
+.release-div.active{
+    display: block;
+}
+.release-div {
+    display: none;
+}
+
+.release-div input {
+    max-width: 100%;
+    margin: 5px 0;
+    padding: 5px;
+    border-radius: 10px;
+}
+.filter-release.active .release-div {
+    display: block;
 }

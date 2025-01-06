@@ -3,13 +3,14 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Bootstrap demo</title>
+        <title>MovieApp</title>
         <link rel="stylesheet" href="style/app.css">
         <link
             href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
             rel="stylesheet"
             integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
             crossorigin="anonymous">
+    
     </head>
     <body>
         <header>
@@ -22,24 +23,6 @@
                         aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
-                    <div class="collapse navbar-collapse " id="navbarNav">
-                        <ul class="navbar-nav ms-auto">
-                            <li class="nav-item">
-                                <a class="nav-link active" aria-current="page"
-                                    href="#">Home</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Features</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Pricing</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link disabled"
-                                    aria-disabled="true">Disabled</a>
-                            </li>
-                        </ul>
-                    </div>
                 </nav>
             </header>
             <main>
@@ -47,7 +30,7 @@
                     <div class="title">
                         <h1>MovieApp</h1>
                         <span>You can search any movie that you want and see the
-                            rating, comments,actor list of that movie</span>
+                            rating, comments.</span>
                     </div>
                     <div>
                         <div class="row">
@@ -71,7 +54,7 @@
 
                                 <div class="search-results">
                                     <ul class="result-list">
-                                        <li class="result-element p-3">
+                                        <!-- <li class="result-element p-3">
                                             <div class="row" style="gap: 15px;">
                                                 <div class="col-md-2">
                                                     <div class="movie-img">
@@ -130,7 +113,7 @@
                                                    </div>
                                                 </div>
                                             </div>
-                                        </li>
+                                        </li> -->
                                     </ul>
                                 </div>
                             </div>
@@ -174,6 +157,21 @@
                                         </li>
                                     </ul>
                                 </div>
+
+                                <div class="release-date-box p-3">
+                                    <h4 style="color: #fff;">Filter</h4>
+                                    <ul class="filter-list">
+                                        <li class="filter-release"
+                                        data-value="release_date">
+                                        Release Date Interval
+
+                                        <div class="release-div">
+                                            <input type="number" class="start-date" placeholder="Start Year">
+                                            <input type="number" class="end-date" placeholder="End Year">
+                                        </div>
+                                    </li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
                         <div class="movie-details">
@@ -183,193 +181,8 @@
                 </div>
             </main>
 
-            <script>
-        const sortElement = document.querySelectorAll('.sort-element');
-
-        sortElement.forEach((element) => {
-            element.addEventListener('click', (e) => {
-                event.target.classList.add('active');
-
-                sortElement.forEach((sortElement) => {
-                    if(sortElement != event.target) {
-                        sortElement.classList.remove('active');
-                    }
-                })
-
-            })
-        })
-
-        const filterElement = document.querySelectorAll('.filter-element');
-
-        filterElement.forEach((element) => {
-            element.addEventListener('click', (e) => {
-                event.target.classList.add('active');
-
-                filterElement.forEach((filterElement) => {
-                    if(filterElement != event.target) {
-                        filterElement.classList.remove('active');
-                    }
-                })
-
-            })
-        })
-    </script>
-    <script>
-        function formatDate(date) {
-            console.log("kontrol " + date);
-            
-
-
-        const day = date.getDate();
-        const month = date.getMonth() + 1;
-        const year = date.getFullYear();
-        return `${day}.${month}.${year}`;
-    }
-    </script>
-
-            <script>
-        const button = document.querySelector('#searchButton');
-        const input = document.querySelector('#searchInput');
-        const list = document.querySelector('.result-list');
-
-        
-        button.addEventListener('click' , (e) => {
-            const filterText = document.querySelector('.filter-element.active').getAttribute('data-value');
-
-            
-            search(input.value,filterText);
-        })
-
-
-        let data = []
-
-        
-
-        const search= (input,filterText) => {
-            const options = {
-                method: 'GET',
-                headers: {
-                    accept: 'application/json',
-                    Authorization: 'eyJhbGciOiJIUzI1NiJ9.eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJmOTkzNzE2YTBhNTIyYjZkMmNmMGJiNDdiMGViYzFmYSIsIm5iZiI6MTY5MzI3MjA1Ni42NjgsInN1YiI6IjY0ZWQ0N2Y4NGNiZTEyMDExYjkwYzgxZCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.jifM-htiK2HtH7R0CWTD8Xuofku7pdvcV1rVuqiNR7U.jifM-htiK2HtH7R0CWTD8Xuofku7pdvcV1rVuqiNR7U'
-                }
-            };
-
-            const apiKey = "f993716a0a522b6d2cf0bb47b0ebc1fa"
-
-            let query;
-            switch (filterText) {
-                case "all":
-                    query = `https://api.themoviedb.org/3/search/multi?api_key=${apiKey}&query=${input}`
-                    break;
-                case "tv":
-                    query = `https://api.themoviedb.org/3/search/tv?api_key=${apiKey}&query=${input}`
-                    break;
-                case "movie":
-                    query = `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${input}`    
-                    break;
-            }
-
-            
-
-            fetch(query, options)
-            .then(res => res.json())
-            .then((res) => {
-                list.innerHTML = "";
-                data = res;
-                console.log(data);
-                
-              const sort = document.querySelector('.sort-element.active').getAttribute('data-value');
-              
-
-             data.results =  data.results.filter((element) => element.poster_path ? element : null);
-
-              if(sort != "release_date") {
-                data.results.sort((a,b) => b[`${sort}`] - a[`${sort}`]);
-              }else {
-                console.log("kontorl : " + new Date("2018-07-15"));
-                
-                data.results.sort((a, b) => new Date(b.release_date ? b.release_date : b.first_air_date) - new Date(a.release_date ? a.release_date : a.first_air_date));
-              }
-
-               data.results.forEach(element => {
-               
-                if (element != null) {
-
-                    const date = formatDate(new Date(element.release_date));
-
-                    const text = `
-                    <li class="result-element p-3">
-                            <div class="row" style="gap: 15px;">
-                                <div class="col-md-2">
-                                    <div class="movie-img">
-                                        <img src="https://image.tmdb.org/t/p/original/${element.poster_path}" alt="">
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="d-flex flex-column movie-att h-100 align-items-start justify-content-center" style="gap: 5px;">
-                                        <h4>${element.title ? element.title : element.name}</h4>
-                                        <p><span>Ratings : </span> <span> ${element.vote_average}</span></p>
-                                        <p><span>Vote Count : </span> <span> ${element.vote_count} </span></p>
-                                    </div>
-                                </div>
-                                <div class="col-md-3">
-                                    <div class="detail ms-auto me-5 d-flex align-items-center h-100">
-                                        <button class="primary-button" type="button" data-bs-toggle="collapse" href="#multiCollapseExample${element.id}" role="button" aria-expanded="false" aria-controls="multiCollapseExample1" style="height: 50px; padding: 15px;">
-                                            Details
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="collapse multi-collapse detail-div" id="multiCollapseExample${element.id}">
-                                                <div>
-                                                   <div>
-                                                        <span class="detail-span">Overview :</span>
-                                                        <p>
-                                                            ${element.overview}
-                                                        </p> 
-                                                   </div>
-                                                   <div>
-                                                        <span class="detail-span">Language :</span>
-                                                        <span>
-                                                            ${element.original_language}
-                                                        </span> 
-                                                   </div>
-                                                   <div>
-                                                        <span class="detail-span">
-                                                            Popularity : 
-                                                        </span>
-                                                        <span>
-                                                            ${element.popularity}
-                                                        </span>
-                                                   </div>
-                                                   <div>
-                                                    <span class="detail-span">
-                                                        Release Date : 
-                                                    </span>
-                                                    <span>${date}</span>
-                                                   </div>
-                                                </div>
-                            </div>
-                        </li>
-                 `;
-
-                 let node = document.createTextNode(text);
-                 list.innerHTML += text;
-                }
-
-                
-                 
-               });
-                
-
-            })
-            .catch(err => console.error(err));
-
-        }
-
-
-       
-    </script>
+           
+            <script src="app.js"></script>
             <script
                 src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
                 integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
